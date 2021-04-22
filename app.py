@@ -22,9 +22,8 @@ db.create_all()
 
 @app.route('/')
 def list_page():
-    pets = AdoptPet.query.all()
-   
-    print(pets[len(pets)-1].photo_url)
+    pets = AdoptPet.query.all()  
+  
     return render_template('list_pets.html', pets=pets)
 
 
@@ -52,7 +51,7 @@ def add_pet():
 
 
 @app.route('/<int:pet_id>/edit', methods=["GET", "POST"])
-def edit_pets(pet_id):
+def edit_pet(pet_id):
     pet = AdoptPet.query.get_or_404(pet_id)
     form = EditPetForm(obj=pet)
 
